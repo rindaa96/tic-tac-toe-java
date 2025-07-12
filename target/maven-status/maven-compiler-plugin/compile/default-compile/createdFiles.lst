@@ -1,5 +1,6 @@
 com\fwd\tictactoe\model\GameState.class
 com\fwd\tictactoe\exception\GameException.class
+com\fwd\tictactoe\config\JacksonConfig.class
 com\fwd\tictactoe\model\Board.class
 com\fwd\tictactoe\TicTacToeApplication.class
 com\fwd\tictactoe\exception\GlobalExceptionHandler.class

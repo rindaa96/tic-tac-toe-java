@@ -13,6 +13,7 @@ public class GameService {
     private final ConcurrentHashMap<String, GameState> games = new ConcurrentHashMap<>();
 
     public String createGame(int size) {
+        if (size < 3) throw new GameException("Minimum game size is 3");
         String gameId = UUID.randomUUID().toString();
         games.put(gameId, new GameState(size));
         return gameId;
