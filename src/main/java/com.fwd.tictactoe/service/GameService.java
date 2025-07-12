@@ -32,7 +32,7 @@ public class GameService {
         boolean valid = state.getBoard().placeMove(row, col, state.getCurrentPlayer());
         if (!valid) throw new GameException("Invalid move");
 
-        if (state.getBoard().checkWin(state.getCurrentPlayer())) {
+        if (state.getBoard().checkWin(state.getCurrentPlayer(), row, col)) {
             state.setGameOver(true);
             state.setWinner(state.getCurrentPlayer());
         } else if (state.getBoard().isFull()) {

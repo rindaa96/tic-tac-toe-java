@@ -25,26 +25,45 @@ public class Board {
         return true;
     }
 
-    public boolean checkWin(String player) {
-        // Check rows & columns
+    public boolean checkWin(String player, int row, int col) {
+        boolean winRow = true;
+        boolean winCol = true;
+        boolean winDiag1 = true;
+        boolean winDiag2 = true;
+
+        // Check the affected row and column
         for (int i = 0; i < size; i++) {
-            boolean rowWin = true;
-            boolean colWin = true;
-            for (int j = 0; j < size; j++) {
-                if (!player.equals(grid[i][j])) rowWin = false;
-                if (!player.equals(grid[j][i])) colWin = false;
+            if (!player.equals(grid[row][i])) { //check for the horizontal value
+                winRow = false;
             }
-            if (rowWin || colWin) return true;
+            if (!player.equals(grid[i][col])) { //check for the vertical value
+                winCol = false;
+            }
         }
 
-        // Check diagonals
-        boolean diag1 = true, diag2 = true;
-        for (int i = 0; i < size; i++) {
-            if (!player.equals(grid[i][i])) diag1 = false;
-            if (!player.equals(grid[i][size - i - 1])) diag2 = false;
+        // Check main diagonal (\) only if (row == col)
+        if (row != col) winDiag1 = false; //for the row,col --> 0,0 ; 1,1 ; 2;2
+        if (winDiag1) {
+            for (int i = 0; i < size; i++) {
+                if (!player.equals(grid[i][i])) {
+                    winDiag1 = false;
+                    break;
+                }
+            }
         }
 
-        return diag1 || diag2;
+        // Check anti-diagonal (/) only if (row + col == size - 1)
+        if (row + col != size - 1) winDiag2 = false; //for the row,col --> 0+2 != 3-1, 1+1 != 3-1, 2+0
+        if (winDiag2) {
+            for (int i = 0; i < size; i++) {
+                if (!player.equals(grid[i][size - 1 - i])) {
+                    winDiag2 = false;
+                    break;
+                }
+            }
+        }
+
+        return winRow || winCol || winDiag1 || winDiag2;
     }
 
     public boolean isFull() {
