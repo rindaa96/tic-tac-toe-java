@@ -37,6 +37,7 @@ public class GameService {
             state.setWinner(state.getCurrentPlayer());
         } else if (state.getBoard().isFull()) {
             state.setGameOver(true);
+            throw new GameException("Game is already over")
         } else {
             state.switchPlayer();
         }

@@ -2,17 +2,21 @@ package com.fwd.tictactoe.model;
 
 public class Board {
     private final int size;
+    private int count = 0;
     private final String[][] grid;
 
     public Board(int size) {
         this.size = size;
+        this.count = count;
         this.grid = new String[size][size];
     }
 
     public int getSize() {
         return size;
     }
-
+    public int getCount() {
+        return count;
+    }
     public String[][] getGrid() {
         return grid;
     }
@@ -22,6 +26,7 @@ public class Board {
             return false;
         }
         grid[row][col] = player;
+        count++;
         return true;
     }
 
@@ -67,11 +72,6 @@ public class Board {
     }
 
     public boolean isFull() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (grid[i][j] == null) return false;
-            }
-        }
-        return true;
+        return count == size * size;
     }
 }
