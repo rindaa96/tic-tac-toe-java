@@ -2,5 +2,6 @@ com\fwd\tictactoe\model\GameState.class
 com\fwd\tictactoe\exception\GameException.class
 com\fwd\tictactoe\model\Board.class
 com\fwd\tictactoe\TicTacToeApplication.class
+com\fwd\tictactoe\exception\GlobalExceptionHandler.class
 com\fwd\tictactoe\controller\GameController.class
 com\fwd\tictactoe\service\GameService.class
